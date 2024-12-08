@@ -26,7 +26,7 @@ const Home = () => {
 					<CardContent>
 						<Box display="flex" flexDirection="column" alignItems="flex-start">
 							<Typography variant="h6" gutterBottom>
-								Number of Recruitment
+								Número de reclutados
 							</Typography>
 							<Typography variant="h4" component="div" fontWeight="bold">
 								{recruitmentCount}
@@ -41,7 +41,7 @@ const Home = () => {
 				<CardWrapper>
 					<CardContent>
 						<Typography variant="h6" gutterBottom>
-							Number of Processes
+							Número de procesos
 						</Typography>
 						<Typography variant="h4" component="div" fontWeight="bold">
 							{processCount}
