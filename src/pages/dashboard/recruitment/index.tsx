@@ -21,6 +21,7 @@ import {
 } from '@mui/material';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import FileOpenIcon from '@mui/icons-material/FileOpen';
 
 const Recruitment = () => {
   const [documents, setDocuments] = useState([]);
@@ -31,8 +32,8 @@ const Recruitment = () => {
     education: '',
   });
   const [candidates, setCandidates] = useState([
-    { name: 'Carlos Espinoza', skills: 'React, Node.js', experience: '3 años', location: 'Lima', education: 'Egresado' },
-    { name: 'Andrew Serna', skills: 'Python, AI', experience: '5 años', location: 'Chincha', education: 'Maestría' },
+    { name: 'Carlos Espinoza', skills: 'React, Node.js', experience: '3 años', location: 'Lima', education: 'Egresado', cv: 'CMEP.pdf' },
+    { name: 'Andrew Serna', skills: 'Python, AI', experience: '5 años', location: 'Chincha', education: 'Maestría', cv: 'SernaHOT.pdf' },
   ]);
 
   const handleUpload = (event) => {
@@ -49,6 +50,10 @@ const Recruitment = () => {
   const applyFilters = () => {
     // Apply filters to candidates (example logic)
     console.log('Filters applied:', filters);
+  };
+
+  const handleOpenCV = (cv) => {
+    alert(`Opening CV: ${cv}`); // Replace with actual logic to open/download CV
   };
 
   return (
@@ -130,7 +135,7 @@ const Recruitment = () => {
       {/* Candidates List Section */}
       <Paper sx={{ p: 3 }}>
         <Typography variant="h6">Lista de Candidatos</Typography>
-        <TableContainer>
+        <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
@@ -139,6 +144,7 @@ const Recruitment = () => {
                 <TableCell>Experiencia</TableCell>
                 <TableCell>Ubicación</TableCell>
                 <TableCell>Educación</TableCell>
+				<TableCell>CV</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -149,6 +155,11 @@ const Recruitment = () => {
                   <TableCell>{candidate.experience}</TableCell>
                   <TableCell>{candidate.location}</TableCell>
                   <TableCell>{candidate.education}</TableCell>
+				  <TableCell>
+					<IconButton color="primary" onClick={() => handleOpenCV(candidate.cv)}>
+						<FileOpenIcon />
+					</IconButton>
+				  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
