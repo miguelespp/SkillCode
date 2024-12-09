@@ -6,6 +6,7 @@ import Login from "../pages/auth";
 import Home from "../pages/dashboard/home";
 import PublicationView from "../pages/dashboard/publication";
 import RecruitmentView from "../pages/dashboard/recruitment";
+import DetailView from "../pages/dashboard/recruitment/detail";
 
 const routes: RouteObject[] = [
 	{
@@ -38,6 +39,10 @@ const routes: RouteObject[] = [
 				path: "/dashboard/recruitment",
 				element: createElement(RecruitmentView),
 			},
+			{
+				path: "/dashboard/recruitment/:id",
+				element: createElement(DetailView),
+			}
 		],
 	},
 ];

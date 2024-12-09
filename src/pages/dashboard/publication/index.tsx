@@ -10,20 +10,18 @@ import {
   TextField,
   Button,
 } from '@mui/material';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
+import type Offer from '../../../types/recruitment';
 const Publication = () => {
   const [selectedPortals, setSelectedPortals] = useState({
     linkedIn: false,
     indeed: false,
     glassdoor: false,
   });
-  const [vacancyDetails, setVacancyDetails] = useState({
+  const [vacancyDetails, setVacancyDetails] = useState<Offer>({
     title: '',
     description: '',
     requirements: '',
-    closingDate: null,
+    closingDate: '',
     priority: '',
   });
 
@@ -125,16 +123,14 @@ const Publication = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                label="Fecha de Cierre"
-                value={vacancyDetails.closingDate}
-                onChange={(date) =>
-                  setVacancyDetails({ ...vacancyDetails, closingDate: date })
-                }
-                renderInput={(params) => <TextField {...params} fullWidth />}
-              />
-            </LocalizationProvider>
+            <TextField
+              fullWidth
+              label="Fecha de Cierre"
+              type="date"
+              name="closingDate"
+              value={vacancyDetails.closingDate}
+              onChange={handleInputChange}
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
